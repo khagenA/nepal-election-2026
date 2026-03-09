@@ -307,4 +307,5 @@ with gr.Blocks(title="Nepal Election 2082 — PR Results") as demo:
 
 if __name__ == '__main__':
     import os
-    demo.launch(css=CSS, server_port=int(os.environ.get('PORT', 7860)), server_name='0.0.0.0')
+    port = int(os.environ.get('PORT', 7860))
+    demo.launch(css=CSS, server_port=port, server_name='0.0.0.0')
