@@ -180,8 +180,8 @@ def build_charts(parties, votes):
     ))
     fig1.update_layout(**mobile_layout(
         title_text=(f"<b>PR Vote Share</b><br>"
-                    f"<sup>जम्मा मत: {total_votes:,} &nbsp;|&nbsp; 🔴 LIVE &nbsp;|&nbsp; {timestamp}</sup>"),
-        center_text=f"जम्मा मत<br><b>{total_votes/1e6:.2f}M</b>", height=560,
+                    f"<sup>Total Votes: {total_votes:,} &nbsp;|&nbsp; 🔴 LIVE &nbsp;|&nbsp; {timestamp}</sup>"),
+        center_text=f"Total Votes <br><b>{total_votes/1e6:.2f}M</b>", height=560,
     ))
 
     seats_df = allocate_seats(df, TOTAL_PR_SEATS)
@@ -253,10 +253,10 @@ body { font-family: Georgia, serif !important; background: #F0F2F5; }
 """
 
 # ── Gradio UI ─────────────────────────────────────────────────────────────────
-with gr.Blocks(title="Nepal Election 2082 — PR Results") as demo:
+with gr.Blocks(title="Nepal Election 2026 — PR Results") as demo:
 
     gr.HTML("""
-        <div id='title'>🗳️ Nepal Election 2082 — PR Results</div>
+        <div id='title'>🗳️ Nepal Election 2026 — PR Results</div>
         <div id='subtitle'>
             समानुपातिक निर्वाचनमा मतगणनाको आधारमा दलगत स्थिति &nbsp;|&nbsp;
             Live · <a href='https://result.election.gov.np/PRVoteChartResult2082.aspx'
