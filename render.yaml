@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: nepal-election-2082
+    runtime: python
+    buildCommand: pip install -r requirements.txt && python -m playwright install chromium --with-deps
+    startCommand: python app.py
+    envVars:
+      - key: PORT
+        value: 7860
+    plan: free
