@@ -27,17 +27,22 @@ PARTY_COLORS = [
 ]
 EXTRA_COLORS = ['#546E7A','#795548','#5D4037','#607D8B','#78909C','#8D6E63','#A1887F']
 
-# ── Install Playwright browser once ───────────────────────────────────────────
+# ── Install Playwright browser at startup ─────────────────────────────────────
 def ensure_browser():
     try:
+        # Install system dependencies first (needed on Render/Linux)
+        subprocess.run(
+            [sys.executable, '-m', 'playwright', 'install-deps', 'chromium'],
+            capture_output=True, text=True, timeout=300
+        )
         r = subprocess.run(
-            [sys.executable, '-m', 'playwright', 'install', 'chromium', '--with-deps'],
+            [sys.executable, '-m', 'playwright', 'install', 'chromium'],
             capture_output=True, text=True, timeout=300
         )
         if r.returncode == 0:
             print('✅ Playwright Chromium ready.')
         else:
-            print(f'Browser install warning: {r.stderr[:300]}')
+            print(f'Browser install warning: {r.stderr[:500]}')
     except Exception as e:
         print(f'Browser install warning: {e}')
 
